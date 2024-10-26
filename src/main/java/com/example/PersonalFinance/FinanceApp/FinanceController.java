@@ -1,9 +1,6 @@
 package com.example.PersonalFinance.FinanceApp;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,14 +15,14 @@ public class FinanceController
         this.financeService = financeService;
     }
 
-    @GetMapping("")
+    @GetMapping
     public List<Transaction> findAll()
     {
         return financeService.findAll();
     }
 
     @PostMapping("/add")
-    public Transaction saveTransaction(Transaction transaction)
+    public Transaction saveTransaction(@RequestBody Transaction transaction)
     {
         return financeService.saveTransaction(transaction);
     }
