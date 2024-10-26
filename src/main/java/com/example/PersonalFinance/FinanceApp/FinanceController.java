@@ -21,9 +21,21 @@ public class FinanceController
         return financeService.findAll();
     }
 
+    @GetMapping("/{id}")
+    public Transaction findById(@PathVariable Long id)
+    {
+        return financeService.findById(id);
+    }
+
     @PostMapping("/add")
     public Transaction saveTransaction(@RequestBody Transaction transaction)
     {
         return financeService.saveTransaction(transaction);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable Long id)
+    {
+        financeService.deleteTransactionById(id);
     }
 }
