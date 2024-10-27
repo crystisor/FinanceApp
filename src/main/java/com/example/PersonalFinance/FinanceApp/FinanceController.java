@@ -27,6 +27,13 @@ public class FinanceController
         return financeService.findById(id);
     }
 
+    @GetMapping("/user/{username}")
+    public User findUserById(@PathVariable String username)
+    {
+        return financeService.findUserByUsername(username);
+    }
+
+
     @PostMapping("/add")
     public Transaction saveTransaction(@RequestBody Transaction transaction)
     {
@@ -37,5 +44,11 @@ public class FinanceController
     public void deleteById(@PathVariable Long id)
     {
         financeService.deleteTransactionById(id);
+    }
+
+    @PostMapping("/register")
+    public User registerUser(@RequestBody User user)
+    {
+        return financeService.registerUser(user);
     }
 }
